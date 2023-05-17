@@ -1,9 +1,9 @@
-import { buildResolves } from "./buildResolves";
-import { buildLoaders } from "./buildLoaders";
-import { Configuration } from "webpack";
-import { BuildOptions } from "./types/config";
-import { buildPlugins } from "./buildPlugins";
-import { buildDevServer } from "./buildDevServer";
+import { buildResolves } from './buildResolves';
+import { buildLoaders } from './buildLoaders';
+import { type Configuration } from 'webpack';
+import { type BuildOptions } from './types/config';
+import { buildPlugins } from './buildPlugins';
+import { buildDevServer } from './buildDevServer';
 
 export const buildWebackConfig = (options: BuildOptions): Configuration => {
   const { mode, paths, isDev } = options;
@@ -12,7 +12,7 @@ export const buildWebackConfig = (options: BuildOptions): Configuration => {
     mode,
     entry: paths.entry,
     output: {
-      filename: "[name].[contenthash].js",
+      filename: '[name].[contenthash].js',
       path: paths.output,
       clean: true,
     },
@@ -21,7 +21,7 @@ export const buildWebackConfig = (options: BuildOptions): Configuration => {
       rules: buildLoaders(options),
     },
     resolve: buildResolves(options),
-    devtool: isDev ? "inline-source-map" : undefined,
+    devtool: isDev ? 'inline-source-map' : undefined,
     devServer: isDev ? buildDevServer(options) : undefined,
   };
 };
