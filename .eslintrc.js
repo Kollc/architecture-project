@@ -5,14 +5,18 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ['plugin:react/recommended', 'standard-with-typescript'],
+  extends: [
+    'plugin:react/recommended',
+    'standard-with-typescript',
+    'plugin:i18next/recommended',
+  ],
   overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
     project: [path.resolve(__dirname, 'tsconfig.json')],
   },
-  plugins: ['react'],
+  plugins: ['react', 'i18next'],
   rules: {
     semi: ['error', 'always'],
     '@typescript-eslint/semi': ['error', 'always'],
@@ -24,5 +28,6 @@ module.exports = {
     '@typescript-eslint/strict-boolean-expressions': 'off',
     '@typescript-eslint/naming-convention': 'off',
     '@typescript-eslint/no-floating-promises': [1, { ignoreVoid: true }],
+    'i18next/no-literal-string': ['error', { markupOnly: true }],
   },
 };
