@@ -30,5 +30,22 @@ module.exports = {
     '@typescript-eslint/naming-convention': 'off',
     '@typescript-eslint/no-floating-promises': [1, { ignoreVoid: true }],
     'i18next/no-literal-string': ['error', { markupOnly: true }],
+    '@typescript-eslint/space-before-function-paren': ['error', 'never'],
+    '@typescript-eslint/member-delimiter-style': [
+      'error',
+      {
+        multiline: {
+          delimiter: 'semi',
+          requireLast: true,
+        },
+        singleline: {
+          delimiter: 'semi',
+          requireLast: false,
+        },
+        multilineDetection: 'brackets',
+      },
+    ],
+    indent: ['warn', 2],
+    '@typescript-eslint/indent': ['warn', 2],
   },
 };
