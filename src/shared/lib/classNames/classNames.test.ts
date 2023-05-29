@@ -30,7 +30,7 @@ describe('classNames', () => {
   test('with mods underfined', () => {
     const expected = 'someClass class1 class2 hover';
     expect(
-      classNames('someClass', { hover: true, test: undefined }, [
+      classNames('someClass', { hover: true, test: Boolean(undefined) }, [
         'class1',
         'class2',
       ])

@@ -48,4 +48,12 @@ module.exports = {
     indent: ['warn', 2],
     '@typescript-eslint/indent': ['warn', 2],
   },
+  overrides: [
+    {
+      files: ['**/src/**/*.test.{ts, tsx}'],
+      rules: {
+        'i18next/no-literal-string': ' off',
+      },
+    },
+  ],
 };
