@@ -1,5 +1,4 @@
 const path = require('path');
-
 module.exports = {
   env: {
     browser: true,
@@ -10,6 +9,7 @@ module.exports = {
     'plugin:react/recommended',
     'standard-with-typescript',
     'plugin:i18next/recommended',
+    'plugin:storybook/recommended',
   ],
   overrides: [],
   parserOptions: {
@@ -28,8 +28,19 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/strict-boolean-expressions': 'off',
     '@typescript-eslint/naming-convention': 'off',
-    '@typescript-eslint/no-floating-promises': [1, { ignoreVoid: true }],
-    'i18next/no-literal-string': ['error', { markupOnly: true }],
+    'react/display-name': 'off', //TODO: почитать и сделать норм для hoc
+    '@typescript-eslint/no-floating-promises': [
+      1,
+      {
+        ignoreVoid: true,
+      },
+    ],
+    'i18next/no-literal-string': [
+      'error',
+      {
+        markupOnly: true,
+      },
+    ],
     '@typescript-eslint/space-before-function-paren': ['error', 'never'],
     '@typescript-eslint/member-delimiter-style': [
       'error',
@@ -52,7 +63,7 @@ module.exports = {
     {
       files: ['**/src/**/*.test.{ts, tsx}'],
       rules: {
-        'i18next/no-literal-string': ' off',
+        'i18next/no-literal-string': 'off',
       },
     },
   ],
