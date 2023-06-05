@@ -12,7 +12,7 @@ export default ({ config }: { config: webpack.Configuration }) => {
   };
 
   config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
-    if (/svg/.test(rule.test)) {
+    if (/svg/.test(rule.test as string)) {
       return { ...rule, exclude: /\.svg$/i };
     }
 

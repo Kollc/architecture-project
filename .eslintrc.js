@@ -16,6 +16,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
     project: [path.resolve(__dirname, 'tsconfig.json')],
+    tsconfigRootDir: __dirname,
   },
   plugins: ['react', 'i18next'],
   rules: {
@@ -29,6 +30,7 @@ module.exports = {
     '@typescript-eslint/strict-boolean-expressions': 'off',
     '@typescript-eslint/naming-convention': 'off',
     'react/display-name': 'off', //TODO: почитать и сделать норм для hoc
+    "@typescript-eslint/prefer-includes": "off",
     '@typescript-eslint/no-floating-promises': [
       1,
       {

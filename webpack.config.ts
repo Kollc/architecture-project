@@ -1,6 +1,6 @@
-import { buildWebackConfig } from './config/build/buildWebpackConfig';
 import type webpack from 'webpack';
 import { type BuildEnv, type BuildPaths } from './config/build/types/config';
+import { buildWebackConfig } from './config/build/buildWebpackConfig';
 import path from 'path';
 
 export default (env: BuildEnv) => {
