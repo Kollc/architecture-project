@@ -13,7 +13,8 @@
     "test:ui": "npx loki test",
     "test:ui:ok": "npx loki approve",
     "storybook": "storybook dev -p 6006 -c ./config/storybook",
-    "storybook:build": "storybook build -c ./config/storybook"
+    "storybook:build": "storybook build -c ./config/storybook",
+    "test:ui:ci": "npx loki --requireReference --reactUri file:./storybook-static"
   },
   "keywords": [],
   "author": "",
@@ -42,6 +43,7 @@
     "@types/webpack": "^5.28.0",
     "@types/webpack-bundle-analyzer": "^4.6.0",
     "@types/webpack-dev-server": "^4.7.2",
+    "@typescript-eslint/typescript-estree": "^5.59.8",
     "babel-loader": "^9.1.2",
     "babel-plugin-i18next-extract": "^0.8.3",
     "css-loader": "^6.6.0",
@@ -67,7 +69,8 @@
     "stylelint-config-standard-scss": "^9.0.0",
     "ts-loader": "^9.2.6",
     "ts-node": "^10.5.0",
-    "typescript": "4.9",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.0.4",
     "webpack": "^5.69.1",
     "webpack-bundle-analyzer": "^4.8.0",
     "webpack-cli": "^5.1.0",

@@ -28,4 +28,9 @@ jobs:
         run: npm run stylelint
       - name: unit tests
         run: npm run test:unit
+      - name: storybook build
+        run: npm run storybook:build
+      - name: UI test
+        run: npm run test:ui:ci
+
 
