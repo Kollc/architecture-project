@@ -10,7 +10,6 @@ module.exports = {
     'plugin:react/recommended',
     'standard-with-typescript',
     'plugin:i18next/recommended',
-    'plugin:storybook/recommended',
   ],
   overrides: [],
   parserOptions: {
