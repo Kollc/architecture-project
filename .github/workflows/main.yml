@@ -7,7 +7,7 @@ on:
     branches: [master]
 jobs:
   pipeline:
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [17.x]
@@ -28,4 +28,4 @@ jobs:
         run: npm run stylelint
       - name: unit tests
         run: npm run test:unit
-        
+
