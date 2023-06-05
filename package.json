@@ -47,6 +47,7 @@
     "babel-loader": "^9.1.2",
     "babel-plugin-i18next-extract": "^0.8.3",
     "css-loader": "^6.6.0",
+    "eslint": "^8.42.0",
     "eslint-config-standard-with-typescript": "^34.0.1",
     "eslint-plugin-i18next": "^6.0.1",
     "eslint-plugin-import": "^2.27.5",
@@ -86,6 +87,9 @@
     "react-router-dom": "^6.11.1"
   },
   "loki": {
+    "look-same": {
+      "ignoreCaret": true
+    },
     "configurations": {
       "chrome.laptop": {
         "target": "chrome.app",

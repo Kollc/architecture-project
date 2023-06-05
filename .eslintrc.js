@@ -7,6 +7,7 @@ module.exports = {
     jest: true,
   },
   extends: [
+    'eslint:recommended',
     'plugin:react/recommended',
     'standard-with-typescript',
     'plugin:i18next/recommended',
