@@ -4,10 +4,7 @@
     background-color: var(--inverted-bg-color);
     position: relative;
     transition: width 0.3s;
-}
-
-.collapsed {
-    width: var(--sidebar-width-collapsed);
+    padding: 20px;
 }
 
 .switchers {
@@ -19,4 +16,56 @@
 
 .lang {
     margin-left: 20px;
+}
+
+.collapseBtn {
+    position: absolute;
+    right: -32px;
+    bottom: 32px;
+}
+
+.items {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.item {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.link { 
+    opacity: 1;
+}
+
+.icon {
+    fill: var(--secondary-color);
+    margin-right: 10px;
+}
+
+.collapsed {
+    width: var(--sidebar-width-collapsed);
+
+    .switchers {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .lang {
+        margin-left: 0;
+    }
+
+    .link {
+        opacity: 0;
+        transition: 0.2s opacity;
+        width: 0;
+        display: none;
+    }
+
+    .item {
+        justify-content: center;
+    }
+    
 }

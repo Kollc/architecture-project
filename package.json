@@ -88,9 +88,6 @@
     "react-router-dom": "^6.11.1"
   },
   "loki": {
-    "look-same": {
-      "ignoreCaret": true
-    },
     "configurations": {
       "chrome.laptop": {
         "target": "chrome.docker",
