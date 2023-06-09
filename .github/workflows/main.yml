@@ -22,14 +22,19 @@ jobs:
         run: npm i --legacy-peer-deps
       - name: build prod project
         run: npm run build:prod
+        if: always()
       - name: linting typescript
         run: npm run eslint
+        if: always()
       - name: linting css
         run: npm run stylelint
+        if: always()
       - name: unit tests
         run: npm run test:unit
+        if: always()
       - name: storybook build
         run: npm run storybook:build
+        if: always()
       - name: UI test
         run: npm run test:ui:ci
 

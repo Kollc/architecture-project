@@ -7,14 +7,21 @@
     "dev": "webpack serve --env port=5000",
     "build:prod": "webpack --env mode=production",
     "build:dev": "webpack --env mode=development",
+    
     "eslint": "npx eslint \"**/*.{ts,tsx}\" --fix",
     "stylelint": "npx stylelint \"**/*.scss\" --fix",
+
     "test:unit": "jest --config ./config/jest/jest.config.ts",
     "test:ui": "npx loki test",
     "test:ui:ok": "npx loki approve",
+
     "storybook": "storybook dev -p 6006 -c ./config/storybook",
     "storybook:build": "storybook build -c ./config/storybook",
-    "test:ui:ci": "npx loki --requireReference --reactUri file:./storybook-static"
+
+    "test:ui:ci": "npx loki --requireReference --reactUri file:./storybook-static",
+    "test:ui:report": "npm run test:ui:json && npm run test:ui:html",
+    "test:ui:json": "node scripts/generate-visual-json-report.js",
+    "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html"
   },
   "keywords": [],
   "author": "",
@@ -62,6 +69,7 @@
     "jest-environment-jsdom": "^29.5.0",
     "loki": "^0.31.2",
     "mini-css-extract-plugin": "^2.5.3",
+    "reg-cli": "^0.17.7",
     "regenerator-runtime": "^0.13.11",
     "sass": "^1.62.1",
     "sass-loader": "^12.6.0",
