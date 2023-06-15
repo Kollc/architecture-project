@@ -3,7 +3,6 @@ import { AppRouter } from 'app/providers/router';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Sidebar } from 'widgets/Sidebar';
 import { Suspense } from 'react';
-import 'app/styles/index.scss';
 import { Navbar } from 'widgets/Navbar';
 
 const App = (): JSX.Element => {

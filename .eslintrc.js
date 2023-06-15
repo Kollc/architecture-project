@@ -18,7 +18,7 @@ module.exports = {
     sourceType: 'module',
     project: [path.resolve(__dirname, 'tsconfig.json')],
   },
-  plugins: ['react', 'i18next'],
+  plugins: ['react', 'i18next', 'react-hooks'],
   rules: {
     semi: ['error', 'always'],
     '@typescript-eslint/semi': ['error', 'always'],
@@ -31,6 +31,12 @@ module.exports = {
     '@typescript-eslint/naming-convention': 'off',
     'react/display-name': 'off', //TODO: почитать и сделать норм для hoc
     '@typescript-eslint/prefer-includes': 'off',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'error',
+    '@typescript-eslint/no-confusing-void-expression': [
+      'error',
+      { ignoreArrowShorthand: true },
+    ],
     '@typescript-eslint/no-floating-promises': [
       1,
       {
@@ -63,7 +69,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['**/src/**/*.test.{ts, tsx}'],
+      files: ['**/src/**/*.{test,stories}.{ts, tsx}'],
       rules: {
         'i18next/no-literal-string': 'off',
       },
