@@ -6,14 +6,17 @@ import { ThemeProvider } from 'app/providers/ThemeProvider';
 import 'shared/config/i18n/i18n';
 import { ErrorBoundary } from 'app/providers/ErrorBoundary';
 import 'app/styles/index.scss';
+import { StoreProvider } from 'app/providers/StoreProvider';
 
 render(
   <React.StrictMode>
     <BrowserRouter>
       <ErrorBoundary>
-        <ThemeProvider>
-          <App />
-        </ThemeProvider>
+        <StoreProvider>
+          <ThemeProvider>
+            <App />
+          </ThemeProvider>
+        </StoreProvider>
       </ErrorBoundary>
     </BrowserRouter>
   </React.StrictMode>,

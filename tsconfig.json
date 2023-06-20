@@ -19,6 +19,11 @@
       "module": "CommonJS"
     }
   },
-  "include": ["./webpack.config.ts", "./config/jest/setupTests.ts", "*/**/*.tsx", "*/**/*.ts"],
+  "include": [
+    "./webpack.config.ts",
+    "./config/jest/setupTests.ts",
+    "*/**/*.tsx",
+    "*/**/*.ts"
+  ],
   "exclude": ["node_modules"]
 }
