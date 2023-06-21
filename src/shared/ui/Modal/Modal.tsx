@@ -1,4 +1,3 @@
-import { useTheme } from 'app/providers/ThemeProvider';
 import {
   type MouseEvent,
   type ReactNode,
@@ -23,12 +22,10 @@ const ANIMATION_DELAY = 300;
 export const Modal = ({ className, children, onClose, isOpen }: ModalProps) => {
   const [isClosing, setIsClosing] = useState(false);
   const timeRef = useRef<ReturnType<typeof setTimeout>>();
-  const { theme } = useTheme();
 
   const mods: Record<string, boolean> = {
     [cls.opened]: isOpen,
     [cls.isClosing]: isClosing,
-    [cls[theme]]: true,
   };
 
   const closeHandler = useCallback(() => {
