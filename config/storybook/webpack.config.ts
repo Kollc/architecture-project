@@ -1,7 +1,7 @@
 import { type BuildPaths } from './../build/types/config';
 import type webpack from 'webpack';
 import path from 'path';
-import { type RuleSetRule } from 'webpack';
+import { DefinePlugin, type RuleSetRule } from 'webpack';
 
 export default ({ config }: { config: webpack.Configuration }) => {
   const paths: BuildPaths = {
@@ -26,6 +26,12 @@ export default ({ config }: { config: webpack.Configuration }) => {
 
   config.resolve.modules.push(paths.src);
   config.resolve.extensions.push('.ts', '.tsx');
+
+  config.plugins.push(
+    new DefinePlugin({
+      __IS_DEV__: true,
+    })
+  );
 
   return config;
 };

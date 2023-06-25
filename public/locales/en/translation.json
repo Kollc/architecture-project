@@ -9,5 +9,8 @@
   "Короткий Язык": "En",
   "Войти": "Entry",
   "Введите username": "Entry username",
-  "Введите password": "Entry password"
+  "Введите password": "Entry password",
+  "Форма авторизации": "Auth form",
+  "error": "You entered an incorrect username or password",
+  "Выйти": "Logout"
 }

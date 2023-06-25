@@ -33,6 +33,8 @@ module.exports = {
     '@typescript-eslint/prefer-includes': 'off',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'error',
+    "space-before-function-paren": "off",
+    "@typescript-eslint/space-before-function-paren": "warning",
     '@typescript-eslint/no-confusing-void-expression': [
       'error',
       { ignoreArrowShorthand: true },
