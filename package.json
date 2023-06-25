@@ -18,7 +18,8 @@
     "test:ui:report": "npm run test:ui:json && npm run test:ui:html",
     "test:ui:json": "node scripts/generate-visual-json-report.js",
     "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
-    "server": "node ./json-server/index.js"
+    "server": "node ./json-server/index.js",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
@@ -85,7 +86,8 @@
     "webpack": "^5.69.1",
     "webpack-bundle-analyzer": "^4.8.0",
     "webpack-cli": "^5.1.0",
-    "webpack-dev-server": "^4.7.4"
+    "webpack-dev-server": "^4.7.4",
+    "husky": "^8.0.0"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
