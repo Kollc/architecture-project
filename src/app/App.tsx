@@ -3,8 +3,8 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Sidebar } from 'widgets/Sidebar';
 import { Suspense, useEffect } from 'react';
 import { Navbar } from 'widgets/Navbar';
-import { useAppDispatch } from './providers/StoreProvider/types/store';
 import { userActions } from 'entities/User';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 const App = (): JSX.Element => {
   const dispatch = useAppDispatch();

@@ -9,7 +9,7 @@ import { userReducer } from 'entities/User';
 import { createReducerManager } from './reducerManager';
 
 export function createReduxStore(
-  initialStore?: StateSchema,
+  initialStore?: DeepPartial<StateSchema>,
   asyncReducer?: DeepPartial<ReducersMapObject<StateSchema>>
 ) {
   const rootReducer: DeepPartial<ReducersMapObject<StateSchema>> = {
@@ -24,7 +24,7 @@ export function createReduxStore(
 
   const store = configureStore<StateSchema>({
     reducer: reducerManager.reduce,
-    preloadedState: initialStore,
+    preloadedState: initialStore as StateSchema,
     devTools: __IS_DEV__,
   });
 
@@ -33,5 +33,3 @@ export function createReduxStore(
 
   return store;
 }
-
-export default createReduxStore();

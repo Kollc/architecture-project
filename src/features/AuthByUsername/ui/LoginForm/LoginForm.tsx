@@ -6,10 +6,6 @@ import { Input } from 'shared/ui/Input/Input';
 import { memo, useCallback } from 'react';
 import { loginActions, loginReducer } from './../../model/slice/loginSlice';
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
-import {
-  useAppDispatch,
-  useAppSelector,
-} from 'app/providers/StoreProvider/types/store';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { getLoginUsername } from './../../model/selectors/getLoginUsername/getLoginUsername';
 import { getLoginPassword } from './../../model/selectors/getLoginPassword/getLoginPassword';
@@ -18,16 +14,19 @@ import { getLoginError } from './../../model/selectors/getLoginError/getLoginErr
 import useAsyncReducer, {
   type ReducersList,
 } from 'shared/lib/hooks/useAsyncReducer/useAsyncReducer';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppSelector } from 'shared/lib/hooks/useAppSelector/useAppSelector';
 
 interface LoginModalProps {
   className?: string;
+  onSuccess: () => void;
 }
 
 const reducers: ReducersList = {
   login: loginReducer,
 };
 
-const LoginForm = memo(({ className }: LoginModalProps) => {
+const LoginForm = memo(({ className, onSuccess }: LoginModalProps) => {
   useAsyncReducer({ reducers });
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
@@ -52,8 +51,12 @@ const LoginForm = memo(({ className }: LoginModalProps) => {
   );
 
   const onLoginClick = useCallback(() => {
-    void dispatch(loginByUsername({ username, password }));
-  }, [dispatch, password, username]);
+    void dispatch(loginByUsername({ username, password })).then((res) => {
+      if (res.meta.requestStatus === 'fulfilled') {
+        onSuccess();
+      }
+    });
+  }, [onSuccess, dispatch, password, username]);
 
   return (
     <div className={classNames(cls.LoginForm, {}, [className])}>

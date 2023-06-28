@@ -1,3 +1,4 @@
+import { type AppDispatch } from './types/store';
 import { StoreProvider } from './ui/StoreProvider';
 import { createReduxStore } from './config/store';
 import {
@@ -10,4 +11,5 @@ export {
   createReduxStore,
   type StateSchema,
   type ReduxStoreWithManager,
+  type AppDispatch,
 };

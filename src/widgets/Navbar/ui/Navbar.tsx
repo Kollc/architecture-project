@@ -2,13 +2,11 @@ import cls from './Navbar.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { LoginModal, loginActions } from 'features/AuthByUsername';
-import {
-  useAppDispatch,
-  useAppSelector,
-} from 'app/providers/StoreProvider/types/store';
 import { getUserAuthData, userActions } from 'entities/User';
+import { useAppSelector } from 'shared/lib/hooks/useAppSelector/useAppSelector';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 interface NavbarProps {
   className?: string;
@@ -32,12 +30,6 @@ export const Navbar = ({ className }: NavbarProps) => {
   const onLogout = useCallback(() => {
     dispatch(userActions.logout());
   }, [dispatch]);
-
-  useEffect(() => {
-    if (authData) {
-      setIsAuthModal(false);
-    }
-  }, [authData]);
 
   if (authData) {
     return (
