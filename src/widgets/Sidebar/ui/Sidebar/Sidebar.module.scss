@@ -30,12 +30,6 @@
     flex-direction: column;
 }
 
-.item {
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-}
-
 .link { 
     opacity: 1;
 }
@@ -55,13 +49,6 @@
 
     .lang {
         margin-left: 0;
-    }
-
-    .link {
-        opacity: 0;
-        transition: 0.2s opacity;
-        width: 0;
-        display: none;
     }
 
     .item {
