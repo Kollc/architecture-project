@@ -3,7 +3,7 @@ import { userActions } from 'entities/User';
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 
 describe('loginByUsername.test', () => {
-  test('Success fetching', async () => {
+  test('Success fetching', async() => {
     const userValue = { username: '123', id: '1' };
 
     const thunk = new TestAsyncThunk(loginByUsername);
@@ -20,7 +20,7 @@ describe('loginByUsername.test', () => {
     expect(result.payload).toEqual(userValue);
   });
 
-  test('Failed fetching', async () => {
+  test('Failed fetching', async() => {
     const thunk = new TestAsyncThunk(loginByUsername);
     thunk.api.post.mockReturnValue(Promise.resolve({ status: 403 }));
     const result = await thunk.callThunk({ username: '123', password: '123' });

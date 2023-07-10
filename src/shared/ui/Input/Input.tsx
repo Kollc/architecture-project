@@ -12,8 +12,8 @@ import cls from './Input.module.scss';
 const SIZE_VARIABLE_PX = 5.85;
 
 type HTMLInputProps = Omit<
-  InputHTMLAttributes<HTMLInputElement>,
-  'value' | 'onChange'
+InputHTMLAttributes<HTMLInputElement>,
+'value' | 'onChange'
 >;
 
 interface InputProps extends HTMLInputProps {
