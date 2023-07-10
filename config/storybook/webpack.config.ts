@@ -1,9 +1,8 @@
 import { type BuildPaths } from './../build/types/config';
-import type webpack from 'webpack';
 import path from 'path';
-import { DefinePlugin, type RuleSetRule } from 'webpack';
+import { type Configuration, DefinePlugin, type RuleSetRule } from 'webpack';
 
-export default ({ config }: { config: webpack.Configuration }) => {
+export default ({ config }: { config: Configuration }) => {
   const paths: BuildPaths = {
     entry: '',
     output: '',
@@ -11,27 +10,36 @@ export default ({ config }: { config: webpack.Configuration }) => {
     src: path.resolve(__dirname, '..', '..', 'src'),
   };
 
-  config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
-    if (/svg/.test(rule.test as string)) {
-      return { ...rule, exclude: /\.svg$/i };
-    }
+  if (config.module) {
+    const rules = config.module?.rules as RuleSetRule[];
 
-    return rule;
-  });
+    config.module.rules = rules.map((rule: RuleSetRule) => {
+      if (/svg/.test(rule.test as string)) {
+        return { ...rule, exclude: /\.svg$/i };
+      }
 
-  config.module.rules.push({
-    test: /\.svg$/,
-    use: ['@svgr/webpack'],
-  });
+      return rule;
+    });
 
-  config.resolve.modules.push(paths.src);
-  config.resolve.extensions.push('.ts', '.tsx');
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
+  }
 
-  config.plugins.push(
-    new DefinePlugin({
-      __IS_DEV__: true,
-    })
-  );
+  if (config.resolve?.modules && config.resolve?.extensions) {
+    config.resolve.modules.push(paths.src);
+    config.resolve.extensions.push('.ts', '.tsx');
+  }
+
+  if (config.plugins) {
+    config.plugins.push(
+      new DefinePlugin({
+        __IS_DEV__: JSON.stringify(true),
+        __API__: JSON.stringify(''),
+      })
+    );
+  }
 
   return config;
 };

@@ -14,7 +14,7 @@ interface useAsyncReducerParams {
   removeAfterUnmount?: boolean;
 }
 
-type ReducersListEntry = [StateSchemaKey, Reducer];
+type ReducersListEntry = [string, Reducer];
 
 const useAsyncReducer = ({
   reducers,
@@ -27,7 +27,7 @@ const useAsyncReducer = ({
   // При монтировании компонента мы добавляем редюсер, а при демонтировании удаляем
   useEffect(() => {
     Object.entries(reducers).forEach(([key, reducer]: ReducersListEntry) => {
-      store.reducerManager.add(key, reducer);
+      store.reducerManager.add(key as StateSchemaKey, reducer);
       dispatch({ type: `@INIT ${key} reducer` });
       setStatus('add');
     });
@@ -36,15 +36,14 @@ const useAsyncReducer = ({
       if (removeAfterUnmount) {
         Object.entries(reducers).forEach(
           ([key, reducer]: ReducersListEntry) => {
-            store.reducerManager.remove(key);
+            store.reducerManager.remove(key as StateSchemaKey);
             dispatch({ type: `@DESTROY ${key} reducer` });
             setStatus('remove');
           }
         );
       }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dispatch, reducers, removeAfterUnmount, store.reducerManager]);
 
   return { status };
 };

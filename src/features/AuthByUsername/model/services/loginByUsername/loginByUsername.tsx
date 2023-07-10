@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import type { ThunkConfig } from 'app/providers/StoreProvider';
 import { userActions } from 'entities/User';
 import type { User } from 'entities/User/models/types/userSchema';
 import { USER_LOCALSTORAGE_KEY } from 'shared/consts/localstorage';
@@ -10,22 +10,27 @@ interface LoginByUsernameProps {
 }
 
 export const loginByUsername = createAsyncThunk<
-User,
-LoginByUsernameProps,
-{ rejectValue: string }
->('login/loginByUsername', async(authData, thunkAPI) => {
+  User,
+  LoginByUsernameProps,
+  ThunkConfig<string>
+>('login/loginByUsername', async (authData, thunkApi) => {
+  const { dispatch, extra, rejectWithValue } = thunkApi;
+
   try {
-    const res = await axios.post<User>('http://localhost:8000/login', authData);
+    const res = await extra.api.post<User>('/login', authData);
 
     if (!res.data) {
       throw new Error();
     }
 
     localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(res.data));
-    thunkAPI.dispatch(userActions.setAuthData(res.data));
+    dispatch(userActions.setAuthData(res.data));
 
+    if (extra.navigate) {
+      extra.navigate('/profile');
+    }
     return res.data;
   } catch (error) {
-    return thunkAPI.rejectWithValue('error');
+    return rejectWithValue('error');
   }
 });

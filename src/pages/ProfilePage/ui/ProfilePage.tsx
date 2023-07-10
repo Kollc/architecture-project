@@ -1,6 +1,9 @@
-import { profileReducer } from 'entities/Profile';
-import { useTranslation } from 'react-i18next';
-import useAsyncReducer, { type ReducersList } from 'shared/lib/hooks/useAsyncReducer/useAsyncReducer';
+import { ProfileCard, fetchProfileData, profileReducer } from 'entities/Profile';
+import { useEffect } from 'react';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import useAsyncReducer, {
+  type ReducersList,
+} from 'shared/lib/hooks/useAsyncReducer/useAsyncReducer';
 
 const reducers: ReducersList = {
   profile: profileReducer,
@@ -8,11 +11,15 @@ const reducers: ReducersList = {
 
 const ProfilePage = () => {
   useAsyncReducer({ reducers });
-  const { t } = useTranslation('profile');
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    void dispatch(fetchProfileData());
+  }, [dispatch]);
 
   return (
     <>
-      <div>{t('Страницы профиля')}</div>
+      <ProfileCard />
     </>
   );
 };

@@ -12,8 +12,8 @@ import cls from './Input.module.scss';
 const SIZE_VARIABLE_PX = 5.85;
 
 type HTMLInputProps = Omit<
-InputHTMLAttributes<HTMLInputElement>,
-'value' | 'onChange'
+  InputHTMLAttributes<HTMLInputElement>,
+  'value' | 'onChange'
 >;
 
 interface InputProps extends HTMLInputProps {
@@ -33,7 +33,7 @@ export const Input = memo(
     autofocus,
     ...other
   }: InputProps) => {
-    const ref = useRef<HTMLInputElement>();
+    const ref = useRef<HTMLInputElement | null>(null);
     const [isFocused, setIsFocused] = useState(false);
     const [caretPostition, setCaretPostiton] = useState(0);
 
@@ -45,8 +45,10 @@ export const Input = memo(
     }, [autofocus]);
 
     const onChangeHandler = (evt: ChangeEvent<HTMLInputElement>) => {
-      onChange(evt.target.value);
-      setCaretPostiton(evt.target.value.length);
+      if (onChange) {
+        onChange(evt.target.value);
+        setCaretPostiton(evt.target.value.length);
+      }
     };
 
     const onBlur = () => {

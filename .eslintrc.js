@@ -36,6 +36,7 @@ module.exports = {
     "space-before-function-paren": "off",
     "@typescript-eslint/space-before-function-paren": "warning",
     "@typescript-eslint/no-dynamic-delete": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
     '@typescript-eslint/no-confusing-void-expression': [
       'error',
       { ignoreArrowShorthand: true },
@@ -69,6 +70,10 @@ module.exports = {
     ],
     indent: ['warn', 2],
     '@typescript-eslint/indent': ['warn', 2],
+  },
+  globals: {
+    __DEV__: true,
+    __API__: true,
   },
   overrides: [
     {

@@ -1,4 +1,3 @@
-import { type ReducersMapObject, type DeepPartial } from '@reduxjs/toolkit';
 import { type StoryFn } from '@storybook/react';
 import {
   type StateSchema,
@@ -7,20 +6,21 @@ import {
 import { profileReducer } from 'entities/Profile';
 import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice';
 import { Provider } from 'react-redux';
+import { type ReducersList } from 'shared/lib/hooks/useAsyncReducer/useAsyncReducer';
 
-const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
+const defaultAsyncReducers: ReducersList = {
   login: loginReducer,
-  profile: profileReducer
+  profile: profileReducer,
 };
 
 export const StoreDecorator =
   (
     initialState?: DeepPartial<StateSchema>,
-    asyncReducer?: DeepPartial<ReducersMapObject<StateSchema>>
+    asyncReducer?: ReducersList
   ) =>
     (Story: StoryFn) => {
       const reducers = { ...defaultAsyncReducers, ...asyncReducer };
-      const store = createReduxStore(initialState as StateSchema, reducers);
+      const store = createReduxStore({ initialState, asyncReducer: reducers });
 
       return (
         <Provider store={store}>
